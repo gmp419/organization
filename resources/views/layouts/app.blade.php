@@ -98,8 +98,6 @@
     <script>
         tinymce.init({
             selector: 'textarea',
-            width: 900,
-            height: 300
         });
     </script>
 

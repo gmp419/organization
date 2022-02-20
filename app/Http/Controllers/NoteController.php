@@ -112,6 +112,8 @@ class NoteController extends Controller
             'body' => 'required',
             'images' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $notes = Note::find($request->id);
+
 
         if ($request->file('images')) {
             $image = $request->file('images');
@@ -120,10 +122,9 @@ class NoteController extends Controller
             $imageurl = env('BASE_URL') . 'images/'. $imageName;
         }
         else{
-            $imageurl = $request->image ?? '';
+            $imageurl = $notes->image ?? '';
         }
 
-        $notes = Note::find($request->id);
         $userID = $notes->user->id;
 
         $notes->update([
