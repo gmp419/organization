@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Note;
+use App\Models\NoteTag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ class NoteFactory extends Factory
         return [
             'header' => $this->faker->sentence(),
             'body' => $this->faker->paragraph(),
-            'tag_name' => $this->faker->word(),
+            'tag_name' => NoteTag::all()->random()->name,
             'image' => $this->faker->imageUrl('800', '600'),
             'user_id' => User::factory(),
         ];

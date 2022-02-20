@@ -164,6 +164,9 @@ return [
         App\Providers\FortifyServiceProvider::class,
 
 
+
+
+
         /*
          * Package Service Providers...
          */
@@ -176,6 +179,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // KyslikColumnSortableColumnSortableServiceProvider::class,
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
+
 
     ],
 

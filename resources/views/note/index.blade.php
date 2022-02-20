@@ -8,7 +8,7 @@
                 <a href="{{ route('note.create') }}" class="text-white text-decoration-none mr-2">Create New Note</a>
             </button>
             <button class="btn btn-info text-white">
-            <a href="{{ route('noteTag.index') }}" class="mx-2 text-white text-decoration-none">Create New Tag</a>
+                <a href="{{ route('noteTag.index') }}" class="mx-2 text-white text-decoration-none">Create New Tag</a>
             </button>
         </div>
         <div class="col-md-12 col-sm-12">
@@ -27,17 +27,13 @@
                 <thead>
                     <tr>
                         <th scope="col"></th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Description</th>
+                        <th>@sortablelink('header', 'Title')</th>
+                        <th>@sortablelink('body', 'Description')</th>
                         <th scope="col">
-                            Tags
-                            <span>
-                                <a href="{{ route('note.index') }}" class="text-decoration-none">
-                                    <i class="fas fa-plus-circle"></i>
-                                </a>
-                            </span>
+                            @sortablelink('tag_name', 'Tag')
+     
                         </th>
-                        <th scope="col">User</th>
+                        <th scope="col">@sortablelink('user_id', 'User')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +58,9 @@
                 </tbody>
             </table>
             <span class="float-right">
-                {{ $notes->links( 'pagination::bootstrap-4' ) }}
+                <!-- {{ $notes->links( 'pagination::bootstrap-4' ) }} -->
+                {!! $notes->appends(\Request::except('page'))->render('pagination::bootstrap-4') !!}
+
             </span>
 
         </div>

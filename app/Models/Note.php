@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+
 
 class Note extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     protected $guarded = [];
 
-    // public function notes()
-    // {
-    //     return $this->hasMany(Note::class);
-    // }
+    public $sortable = [ 'header', 'body','tag_name', 'user_id'];
+    
 
     // Post model
     public function user()

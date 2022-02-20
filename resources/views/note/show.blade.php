@@ -32,9 +32,9 @@
                     </span>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title text-left">{{$notes->header}}</h5>
+                    <h5 class="card-title text-left">{!! $notes->header!!}</h5>
                     <p class="card-text text-left">
-                        {{$notes->body}}
+                        {!!$notes->body!!}
                     </p>
                     <a href="{{route('note.index')}}" class="btn btn-primary">Go Back</a>
                 </div>
