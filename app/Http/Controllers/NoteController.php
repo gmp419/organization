@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Note;
+use App\Models\NoteTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Matcher\Not;
@@ -17,7 +18,8 @@ class NoteController extends Controller
     public function index()
     {
         //
-        $notes = Note::paginate(10);
+        
+        $notes = Note::latest()->paginate(10);
         return view('note.index', compact('notes'));
     }
 
@@ -31,7 +33,9 @@ class NoteController extends Controller
     public function create()
     {
         //
-        return view('note.create');
+        $tags = NoteTag::all();
+
+        return view('note.create', compact('tags'));
     }
 
     /**
@@ -46,7 +50,6 @@ class NoteController extends Controller
         $request->validate([
             'header' => 'bail|required|unique:notes|max:255',
             'body' => 'required',
-            'tag_name' => 'unique:notes',
         ]);
 
         if($request->file('note_image')){

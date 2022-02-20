@@ -35,4 +35,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/{id}/update', [NoteController::class, 'update'])->name('note.update');
         Route::get('/{id}/delete', [NoteController::class, 'destroy'])->name('note.delete');
     });
+
+    Route::prefix('note-tag')->group(function () {
+        Route::get('/', [NoteTagController::class, 'index'])->name('noteTag.index');
+        Route::post('/store', [NoteTagController::class, 'store'])->name('noteTag.store');
+        Route::get('/delete/{id}', [NoteTagController::class, 'delete'])->name('noteTag.delete');
+    });
 });

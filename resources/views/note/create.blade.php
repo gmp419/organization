@@ -35,12 +35,25 @@
                     <form action="{{ route('note.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <label for="" class="form-label">Tag</label>
-                            <input type="text" class="form-control" id="" name="tag_name" placeholder="..">
+
                         </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="" name="header" placeholder="Heading..">
+                        <div class="mb-3 d-flex">
+                            <div class="w-75">
+
+                                <label for="" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="" name="header" placeholder="Heading..">
+                            </div>
+                            <div class="w-25">
+                                <label for="" class="form-label">Tag</label>
+                                <!-- <input type="text" class="form-control" id="" name="tag_name" placeholder=".."> -->
+                                <select class="form-select form-control" aria-label="Default select example" name="tag_name">
+                                    <option selected>Select tag</option>
+                                    @foreach($tags as $tag)
+                                    <option value="{{$tag->name}}">{{$tag->name}}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Details</label>
@@ -48,7 +61,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Images:</label>
-                            <input class="form-control pb-3" type="file" name="note_image" id="">
+                            <input class="form-control-file pb-3" type="file" name="note_image" id="">
                         </div>
                         <div class="mb-3">
                             <button class="btn btn-primary" type="submit">
@@ -56,7 +69,7 @@
                             </button>
                         </div>
                     </form>
-                 
+
                 </div>
             </div>
         </div>

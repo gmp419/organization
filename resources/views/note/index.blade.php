@@ -5,7 +5,10 @@
     <div class="row">
         <div class="col-md-12 mb-4">
             <button class="btn btn-primary text-white">
-                <a href="{{ route('note.create') }}" class="text-white text-decoration-none">Create New Note</a>
+                <a href="{{ route('note.create') }}" class="text-white text-decoration-none mr-2">Create New Note</a>
+            </button>
+            <button class="btn btn-info text-white">
+            <a href="{{ route('noteTag.index') }}" class="mx-2 text-white text-decoration-none">Create New Tag</a>
             </button>
         </div>
         <div class="col-md-12 col-sm-12">
@@ -26,8 +29,15 @@
                         <th scope="col"></th>
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Tags</th>
-                        <th scope="col">Created By</th>
+                        <th scope="col">
+                            Tags
+                            <span>
+                                <a href="{{ route('note.index') }}" class="text-decoration-none">
+                                    <i class="fas fa-plus-circle"></i>
+                                </a>
+                            </span>
+                        </th>
+                        <th scope="col">User</th>
                     </tr>
                 </thead>
                 <tbody>

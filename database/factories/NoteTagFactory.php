@@ -23,7 +23,7 @@ class NoteTagFactory extends Factory
     {
         return [
 
-  
+            'name' => $this->faker->word,
 
         ];
     }

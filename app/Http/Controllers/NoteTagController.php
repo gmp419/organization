@@ -15,6 +15,8 @@ class NoteTagController extends Controller
     public function index()
     {
         //
+        $tags = NoteTag::all();
+        return view('note-tag.index', compact('tags'));
     }
 
     /**
@@ -36,6 +38,15 @@ class NoteTagController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'unique:note_tags|max:255|required',
+        ]);
+
+        NoteTag::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('noteTag.index')->with('success', 'Tag created successfully');
     }
 
     /**
@@ -78,8 +89,10 @@ class NoteTagController extends Controller
      * @param  \App\Models\NoteTag  $noteTag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NoteTag $noteTag)
+    public function delete(NoteTag $noteTag, $id)
     {
         //
+        NoteTag::destroy($id);
+        return redirect()->route('noteTag.index')->with('success', 'Tag deleted successfully');
     }
 }
